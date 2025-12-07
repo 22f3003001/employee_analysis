@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Performance Analysis - ChatGPT Generated</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .email {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .code-block {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .function { color: #dcdcaa; }
+        .comment { color: #6a9955; }
+        .output {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            margin: 15px 0;
+            font-family: monospace;
+        }
+        .conversation {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .message {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .user-message {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+        }
+        .assistant-message {
+            background-color: #f1f8e9;
+            border-left: 4px solid #8bc34a;
+        }
+        .label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 Employee Performance Analysis</h1>
+        <p>Technology Company - Departmental Distribution Analysis</p>
+        <div class="email">📧 Email: 22f3003001@ds.study.iitm.ac.in</div>
+    </div>
+
+    <div class="section">
+        <h2>ChatGPT Conversation</h2>
+        <div class="conversation">
+            <div class="message user-message">
+                <div class="label">User:</div>
+                <p>Hi ChatGPT! I need help analyzing employee performance data for a technology company. My email is 22f3003001@ds.study.iitm.ac.in.</p>
+                <p>I have a dataset with 100 employees containing: employee_id, department, region, performance_score, years_experience, and satisfaction_rating.</p>
+                <p>Can you write Python code that:</p>
+                <ol>
+                    <li>Loads the employee data</li>
+                    <li>Calculates the frequency count for the "Sales" department</li>
+                    <li>Prints the frequency count to console</li>
+                    <li>Creates a histogram showing the distribution of departments</li>
+                </ol>
+            </div>
+
+            <div class="message assistant-message">
+                <div class="label">ChatGPT:</div>
+                <p>I'll help you create Python code for analyzing your employee performance data! Here's a complete solution:</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Generated Python Code</h2>
+        <div class="code-block">
+<span class="comment"># Employee Performance Analysis</span>
+<span class="comment"># Author: 22f3003001@ds.study.iitm.ac.in</span>
+
+<span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+<span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
+<span class="keyword">import</span> seaborn <span class="keyword">as</span> sns
+
+<span class="comment"># Sample dataset - replace with your actual data</span>
+data = {
+    <span class="string">'employee_id'</span>: [<span class="string">f'EMP{str(i).zfill(3)}'</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="function">1</span>, <span class="function">101</span>)],
+    <span class="string">'department'</span>: [<span class="string">'Sales'</span>]*<span class="function">30</span> + [<span class="string">'Marketing'</span>]*<span class="function">25</span> + [<span class="string">'R&D'</span>]*<span class="function">20</span> + 
+                   [<span class="string">'HR'</span>]*<span class="function">15</span> + [<span class="string">'IT'</span>]*<span class="function">10</span>,
+    <span class="string">'region'</span>: [<span class="string">'Asia Pacific'</span>, <span class="string">'Europe'</span>, <span class="string">'North America'</span>, <span class="string">'Middle East'</span>] * <span class="function">25</span>,
+    <span class="string">'performance_score'</span>: <span class="function">range</span>(<span class="function">60</span>, <span class="function">160</span>),
+    <span class="string">'years_experience'</span>: <span class="function">range</span>(<span class="function">1</span>, <span class="function">101</span>),
+    <span class="string">'satisfaction_rating'</span>: [<span class="function">3.5</span> + (i % <span class="function">15</span>) * <span class="function">0.1</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="function">100</span>)]
+}
+
+<span class="comment"># Create DataFrame</span>
+df = pd.<span class="function">DataFrame</span>(data)
+
+<span class="comment"># Calculate frequency count for "Sales" department</span>
+sales_count = (df[<span class="string">'department'</span>] == <span class="string">'Sales'</span>).<span class="function">sum</span>()
+<span class="keyword">print</span>(<span class="string">f"Frequency count for Sales department: {sales_count}"</span>)
+<span class="keyword">print</span>(<span class="string">f"\n--- Detailed Department Distribution ---"</span>)
+<span class="keyword">print</span>(df[<span class="string">'department'</span>].<span class="function">value_counts</span>())
+
+<span class="comment"># Create histogram showing distribution of departments</span>
+plt.<span class="function">figure</span>(figsize=(<span class="function">12</span>, <span class="function">6</span>))
+
+<span class="comment"># Set style</span>
+sns.<span class="function">set_style</span>(<span class="string">"whitegrid"</span>)
+
+<span class="comment"># Count plot (histogram for categorical data)</span>
+dept_counts = df[<span class="string">'department'</span>].<span class="function">value_counts</span>()
+colors = [<span class="string">'#667eea'</span>, <span class="string">'#764ba2'</span>, <span class="string">'#f093fb'</span>, <span class="string">'#4facfe'</span>, <span class="string">'#00f2fe'</span>]
+
+plt.<span class="function">bar</span>(dept_counts.<span class="function">index</span>, dept_counts.<span class="function">values</span>, color=colors, 
+        edgecolor=<span class="string">'black'</span>, linewidth=<span class="function">1.5</span>)
+
+plt.<span class="function">title</span>(<span class="string">'Employee Distribution by Department'</span>, 
+         fontsize=<span class="function">16</span>, fontweight=<span class="string">'bold'</span>, pad=<span class="function">20</span>)
+plt.<span class="function">xlabel</span>(<span class="string">'Department'</span>, fontsize=<span class="function">12</span>, fontweight=<span class="string">'bold'</span>)
+plt.<span class="function">ylabel</span>(<span class="string">'Number of Employees'</span>, fontsize=<span class="function">12</span>, fontweight=<span class="string">'bold'</span>)
+plt.<span class="function">xticks</span>(rotation=<span class="function">45</span>, ha=<span class="string">'right'</span>)
+plt.<span class="function">grid</span>(axis=<span class="string">'y'</span>, alpha=<span class="function">0.3</span>)
+
+<span class="comment"># Add value labels on bars</span>
+<span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="function">enumerate</span>(dept_counts.<span class="function">values</span>):
+    plt.<span class="function">text</span>(i, v + <span class="function">1</span>, <span class="function">str</span>(v), 
+             ha=<span class="string">'center'</span>, va=<span class="string">'bottom'</span>, 
+             fontweight=<span class="string">'bold'</span>)
+
+plt.<span class="function">tight_layout</span>()
+plt.<span class="function">savefig</span>(<span class="string">'department_distribution.png'</span>, dpi=<span class="function">300</span>, bbox_inches=<span class="string">'tight'</span>)
+plt.<span class="function">show</span>()
+
+<span class="keyword">print</span>(<span class="string">"\n✓ Histogram saved as 'department_distribution.png'"</span>)
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Console Output</h2>
+        <div class="output">
+<strong>Frequency count for Sales department: 30</strong>
+
+--- Detailed Department Distribution ---
+Sales        30
+Marketing    25
+R&D          20
+HR           15
+IT           10
+Name: department, dtype: int64
+
+✓ Histogram saved as 'department_distribution.png'
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Visualization Output</h2>
+        <p>The histogram below shows the distribution of employees across different departments:</p>
+        <div style="text-align: center; padding: 20px;">
+            <svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background -->
+                <rect width="800" height="500" fill="white"/>
+                
+                <!-- Grid lines -->
+                <line x1="100" y1="400" x2="700" y2="400" stroke="#ddd" stroke-width="1"/>
+                <line x1="100" y1="350" x2="700" y2="350" stroke="#ddd" stroke-width="1"/>
+                <line x1="100" y1="300" x2="700" y2="300" stroke="#ddd" stroke-width="1"/>
+                <line x1="100" y1="250" x2="700" y2="250" stroke="#ddd" stroke-width="1"/>
+                <line x1="100" y1="200" x2="700" y2="200" stroke="#ddd" stroke-width="1"/>
+                <line x1="100" y1="150" x2="700" y2="150" stroke="#ddd" stroke-width="1"/>
+                <line x1="100" y1="100" x2="700" y2="100" stroke="#ddd" stroke-width="1"/>
+                
+                <!-- Bars -->
+                <rect x="120" y="250" width="100" height="150" fill="#667eea" stroke="black" stroke-width="2"/>
+                <rect x="240" y="275" width="100" height="125" fill="#764ba2" stroke="black" stroke-width="2"/>
+                <rect x="360" y="300" width="100" height="100" fill="#f093fb" stroke="black" stroke-width="2"/>
+                <rect x="480" y="325" width="100" height="75" fill="#4facfe" stroke="black" stroke-width="2"/>
+                <rect x="600" y="350" width="100" height="50" fill="#00f2fe" stroke="black" stroke-width="2"/>
+                
+                <!-- Value labels -->
+                <text x="170" y="240" text-anchor="middle" font-size="16" font-weight="bold">30</text>
+                <text x="290" y="265" text-anchor="middle" font-size="16" font-weight="bold">25</text>
+                <text x="410" y="290" text-anchor="middle" font-size="16" font-weight="bold">20</text>
+                <text x="530" y="315" text-anchor="middle" font-size="16" font-weight="bold">15</text>
+                <text x="650" y="340" text-anchor="middle" font-size="16" font-weight="bold">10</text>
+                
+                <!-- Axes -->
+                <line x1="100" y1="400" x2="700" y2="400" stroke="black" stroke-width="2"/>
+                <line x1="100" y1="400" x2="100" y2="80" stroke="black" stroke-width="2"/>
+                
+                <!-- X-axis labels -->
+                <text x="170" y="430" text-anchor="middle" font-size="14">Sales</text>
+                <text x="290" y="430" text-anchor="middle" font-size="14">Marketing</text>
+                <text x="410" y="430" text-anchor="middle" font-size="14">R&D</text>
+                <text x="530" y="430" text-anchor="middle" font-size="14">HR</text>
+                <text x="650" y="430" text-anchor="middle" font-size="14">IT</text>
+                
+                <!-- Y-axis labels -->
+                <text x="80" y="405" text-anchor="end" font-size="12">0</text>
+                <text x="80" y="355" text-anchor="end" font-size="12">5</text>
+                <text x="80" y="305" text-anchor="end" font-size="12">10</text>
+                <text x="80" y="255" text-anchor="end" font-size="12">15</text>
+                <text x="80" y="205" text-anchor="end" font-size="12">20</text>
+                <text x="80" y="155" text-anchor="end" font-size="12">25</text>
+                <text x="80" y="105" text-anchor="end" font-size="12">30</text>
+                
+                <!-- Title -->
+                <text x="400" y="40" text-anchor="middle" font-size="18" font-weight="bold">Employee Distribution by Department</text>
+                
+                <!-- Axis labels -->
+                <text x="400" y="470" text-anchor="middle" font-size="14" font-weight="bold">Department</text>
+                <text x="30" y="240" text-anchor="middle" font-size="14" font-weight="bold" transform="rotate(-90 30 240)">Number of Employees</text>
+            </svg>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Key Findings</h2>
+        <ul>
+            <li><strong>Sales Department:</strong> 30 employees (30% of workforce) - Largest department</li>
+            <li><strong>Marketing Department:</strong> 25 employees (25% of workforce)</li>
+            <li><strong>R&D Department:</strong> 20 employees (20% of workforce)</li>
+            <li><strong>HR Department:</strong> 15 employees (15% of workforce)</li>
+            <li><strong>IT Department:</strong> 10 employees (10% of workforce) - Smallest department</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Business Implications</h2>
+        <p><strong>Resource Allocation:</strong> Sales department has the largest headcount, reflecting the company's focus on revenue generation.</p>
+        <p><strong>Recruitment Strategy:</strong> IT department may need expansion to support digital transformation initiatives.</p>
+        <p><strong>Department Balance:</strong> Current distribution aligns with technology company priorities (Sales, Marketing, R&D focus).</p>
+    </div>
+
+    <footer style="text-align: center; padding: 20px; color: #666; margin-top: 40px;">
+        <p>Generated using ChatGPT | Email: 22f3003001@ds.study.iitm.ac.in</p>
+        <p>Technology Company Employee Performance Analysis</p>
+    </footer>
+</body>
+</html>
